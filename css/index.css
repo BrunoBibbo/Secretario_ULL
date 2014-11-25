@@ -1,0 +1,15 @@
+/* Autores: Bruno Alessio Bibbó | Jorge Gómez Weyler 
+*  Descripción: Hoja de estilos para index.html
+*  Fecha: 25/11/2014 
+*/
+
+* {
+   position: absolute;
+   top: 50%; 
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+h1 {
+   text-align: center;
+}
