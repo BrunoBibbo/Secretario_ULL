@@ -1,0 +1,8 @@
+<!-- Autores: Bruno Alessio Bibbó | Jorge Gómez Weyler -->
+<!-- Descripción: Este fichero almacena los patrones de respuesta que sigue el bot a la hora de responder -->
+<!-- Fecha: 25/11/2014 -->
+
+<category>
+   <pattern>HOLA</pattern>
+   <template>Hola, ¿qué tal?</template>
+</category>
