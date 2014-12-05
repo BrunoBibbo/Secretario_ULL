@@ -1,22 +1,14 @@
 
 //Variables de lectura de ficheros.
 var conocimiento = "lib/patrones.xml";
-var xml;
-
-//Variables del bot.
-var pregunta;
-var respuesta;
-var span;
-var texto;
-
 
 //Principal para conversar.
 function conversar(){
-  pregunta = document.getElementById("pregunta_usuario");
+  pregunta = document.getElementById("pregunta_usuario").value;
+  
   respuesta = reconocerPatron(pregunta);
-
-  span = document.getElementById("conversacion");
-  span.appendChild( document.createTextNode("some new content") );
+  
+  crearRespuestaHtml(pregunta, respuesta);
 }
 
 //Carga el documento XML.
@@ -35,17 +27,35 @@ function cargarXMLDoc(filename){
 
 //Lee el documento XML y lo guarda en una variable.
 function leerXML(){
-  xml = cargarXMLDoc(conocimiento);
+  return cargarXMLDoc(conocimiento);
 }
 
 //Reconoce los patrones del texto y devuelve una respuesta.
 function reconocerPatron(p){
-  leerXML();
+  xml = leerXML();
 
   for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
 	  texto = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
-	  console.log(texto);
   }
   
   return texto;
+}
+
+function crearRespuestaHtml(pregunta, respuesta) {
+  pregunta_humano = document.createElement("LABEL");
+  pregunta_humano.setAttribute("class", "humano");
+  pregunta_humano.appendChild(document.createTextNode(pregunta));
+  
+  respuesta_bot = document.createElement("LABEL");
+  respuesta_bot.setAttribute("class", "bot");
+  respuesta_bot.appendChild(document.createTextNode(respuesta));
+  
+  br = document.createElement("BR");
+  br1 = document.createElement("BR");
+  
+  span = document.getElementById("conversacion");
+  span.appendChild(pregunta_humano);
+  span.appendChild(br);
+  span.appendChild(respuesta_bot);
+  span.appendChild(br1);
 }
