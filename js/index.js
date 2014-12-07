@@ -58,4 +58,5 @@ function crearRespuestaHtml(pregunta, respuesta) {
   span.appendChild(br);
   span.appendChild(respuesta_bot);
   span.appendChild(br1);
+  span.scrollTop = span.scrollHeight;
 }
