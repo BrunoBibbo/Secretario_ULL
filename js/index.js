@@ -31,11 +31,32 @@ function leerXML(){
 }
 
 //Reconoce los patrones del texto y devuelve una respuesta.
-function reconocerPatron(p){
-  xml = leerXML();
+function reconocerPatron(pregunta){
+  var xml = leerXML();
+  var texto;
+  var regexp;
+  var frase;
+  var recogido = 0;
 
   for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
-	  texto = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
+	  frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
+	  regexp = new RegExp(",?\\s");
+	  
+	  palabras_pregunta = pregunta.split(regexp);
+	  
+	  palabras_patron = frase.split(regexp);
+	  
+	  regexp = new RegExp(, "gi");
+
+	  for(j = 0; j < palabras.length; j++){
+	    if(palabras_pregunta[j].match(regexp)){
+	       texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+	       recogido = 1;
+	       break;
+	    }
+	  }
+	  if(recogido)
+	    break;
   }
   
   return texto;
