@@ -1,6 +1,6 @@
-
 //Variables de lectura de ficheros.
 var conocimiento = "lib/patrones.xml";
+var palabrasMalSonantes = "lib/palabrejas.xml"
 
 //Principal para conversar.
 function conversar(){
@@ -26,37 +26,79 @@ function cargarXMLDoc(filename){
 }
 
 //Lee el documento XML y lo guarda en una variable.
-function leerXML(){
-  return cargarXMLDoc(conocimiento);
+function leerXML(fichero){
+  return cargarXMLDoc(fichero);
 }
 
 //Reconoce los patrones del texto y devuelve una respuesta.
 function reconocerPatron(pregunta){
-  var xml = leerXML();
-  var texto;
+  var xml = leerXML(conocimiento);
+  var texto = unsigned;
   var regexp;
   var frase;
   var recogido = 0;
+  
+  texto = reconocimientoMalasPalabras(pregunta);
+  
+  if(texto == unsigned){
+    for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
+	    frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
+	    regexp = new RegExp(",?\\s");
+	  
+	    palabras_pregunta = pregunta.split(regexp);
+	  
+	    palabras_patron = frase.split(regexp);
+	  
+	    regexp = new RegExp(, "gi");
 
+	    for(j = 0; j < palabras.length; j++){
+	      if(palabras_pregunta[j].match(regexp)){
+		texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+		recogido = 1;
+		break;
+	      }
+	    }
+	    if(recogido)
+	      break;
+    }
+  }
+  
+  return texto;
+}
+
+function reconocimientoMalasPalabras(pregunta){
+  var xml = leerXML(palabrasMalSonantes);
+  var palabrota;
+  var regexp;
+  var texto = unsigned;
+  recogido = 0;
+  
   for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
-	  frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
-	  regexp = new RegExp(",?\\s");
-	  
-	  palabras_pregunta = pregunta.split(regexp);
-	  
-	  palabras_patron = frase.split(regexp);
-	  
-	  regexp = new RegExp(, "gi");
-
-	  for(j = 0; j < palabras.length; j++){
-	    if(palabras_pregunta[j].match(regexp)){
-	       texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-	       recogido = 1;
-	       break;
+    palabrota = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
+    regexp = new RegExp(",?\\s");
+    
+    palabras_pregunta = pregunta.split(regexp);
+    
+    regexp = new RegExp(, "gi");
+  
+    for(j = 0; j < palabras.length; j++){
+      if(palabras_pregunta[j].match(regexp)){
+	if(xml.getElementsByTagName('template')[i].childNodes[0].nodeValue != unsigned)
+	  texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+	else{
+	  for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
+	    if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue){
+	      texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
+	      break;
 	    }
 	  }
-	  if(recogido)
-	    break;
+	}
+	recogido = 1;
+	break;
+      }
+      if(recogido)
+	break;
+    }
   }
   
   return texto;
