@@ -33,14 +33,15 @@ function leerXML(fichero){
 //Reconoce los patrones del texto y devuelve una respuesta.
 function reconocerPatron(pregunta){
   var xml = leerXML(conocimiento);
-  var texto = unsigned;
+  var texto;
+  console.log(texto);
   var regexp;
   var frase;
   var recogido = 0;
   
   texto = reconocimientoMalasPalabras(pregunta);
   
-  if(texto == unsigned){
+  if(!texto){
     for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
 	    frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
 	    regexp = new RegExp(",?\\s");
@@ -49,9 +50,9 @@ function reconocerPatron(pregunta){
 	  
 	    palabras_patron = frase.split(regexp);
 	  
-	    regexp = new RegExp(, "gi");
+	    regexp = new RegExp(palabras_patron[0], "gi");
 
-	    for(j = 0; j < palabras.length; j++){
+	    for(j = 0; j < palabras_pregunta.length; j++){
 	      if(palabras_pregunta[j].match(regexp)){
 		texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
 		recogido = 1;
@@ -70,7 +71,7 @@ function reconocimientoMalasPalabras(pregunta){
   var xml = leerXML(palabrasMalSonantes);
   var palabrota;
   var regexp;
-  var texto = unsigned;
+  var texto;
   recogido = 0;
   
   for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
@@ -79,15 +80,19 @@ function reconocimientoMalasPalabras(pregunta){
     
     palabras_pregunta = pregunta.split(regexp);
     
-    regexp = new RegExp(, "gi");
+    regexp = new RegExp(palabrota, "gi");
   
-    for(j = 0; j < palabras.length; j++){
+    for(j = 0; j < palabras_pregunta.length; j++){
       if(palabras_pregunta[j].match(regexp)){
-	if(xml.getElementsByTagName('template')[i].childNodes[0].nodeValue != unsigned)
-	  texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+	console.log(xml.getElementsByTagName('template')[i]);
+	prueba = xml.getElementsByTagName('template')[i];
+	if(prueba !== "undefined"){
+	  //texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+	}
 	else{
+	  console.log("entra");
 	  for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
-	    if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue){
+	    if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
 	      texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
 	      break;
 	    }
