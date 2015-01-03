@@ -53,9 +53,9 @@ function reconocerPatron(pregunta){
 
 	    for(j = 0; j < palabras_pregunta.length; j++){
 	      if(palabras_pregunta[j].match(regexp)){
-		texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-		recogido = 1;
-		break;
+			texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+			recogido = 1;
+			break;
 	      }
 	    }
 	    if(recogido)
