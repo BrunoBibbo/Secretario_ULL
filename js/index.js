@@ -34,7 +34,6 @@ function leerXML(fichero){
 function reconocerPatron(pregunta){
   var xml = leerXML(conocimiento);
   var texto;
-  console.log(texto);
   var regexp;
   var frase;
   var recogido = 0;
@@ -78,31 +77,32 @@ function reconocimientoMalasPalabras(pregunta){
     palabrota = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
     regexp = new RegExp(",?\\s");
     
+	//console.log("palabrota" + i + ": " + palabrota);
+	
     palabras_pregunta = pregunta.split(regexp);
     
+	//console.log(palabras_pregunta);
+	
     regexp = new RegExp(palabrota, "gi");
   
     for(j = 0; j < palabras_pregunta.length; j++){
       if(palabras_pregunta[j].match(regexp)){
-	console.log(xml.getElementsByTagName('template')[i]);
-	prueba = xml.getElementsByTagName('template')[i];
-	if(prueba !== "undefined"){
-	  //texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-	}
-	else{
-	  console.log("entra");
-	  for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
-	    if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
-	      texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
-	      break;
-	    }
+		if(i == 0){
+			texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+		}
+		else{
+			for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
+				if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
+					texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
+					break;
+				}
+			}
+		}
+		recogido = 1;
+		break;
 	  }
-	}
-	recogido = 1;
-	break;
-      }
-      if(recogido)
-	break;
+	  if(recogido)
+		break;
     }
   }
   
