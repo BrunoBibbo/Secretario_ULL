@@ -1,6 +1,7 @@
 //Variables de lectura de ficheros.
 var conocimiento = "lib/patrones.xml";
 var palabrasMalSonantes = "lib/palabrejas.xml"
+var informacionFacultades = "lib/facultades.xml"
 
 //Principal para conversar.
 function conversar(){
