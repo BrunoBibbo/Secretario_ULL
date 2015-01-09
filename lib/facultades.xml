@@ -1,0 +1,10 @@
+<facultades>
+	<facultad name="Escuela Politecnica Superior de Ingeneria" >
+		<carrera>Ingenieria edificacion</carrera>
+		<carrera>Ingenieria agricola</carrera>
+		<carrera>Ingenieria civil</carrera>
+		<carrera>Tecnologias marinas</carrera>
+		<carrera>Naval</carrera>
+		<carrera>Ingenieria radioelectronica naval</carrera>
+	</facultad>
+</facultades>
