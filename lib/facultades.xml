@@ -1,10 +1,122 @@
 <facultades>
-	<facultad name="Escuela Politecnica Superior de Ingeneria" >
-		<carrera>Ingenieria edificacion</carrera>
-		<carrera>Ingenieria agricola</carrera>
-		<carrera>Ingenieria civil</carrera>
-		<carrera>Tecnologias marinas</carrera>
-		<carrera>Naval</carrera>
-		<carrera>Ingenieria radioelectronica naval</carrera>
+	<facultad name="escuela politecnica superior de ingeneria" >
+		<seccion name="arquitectura tecnica">
+			<carrera>Ingenieria edificacion</carrera>
+		</seccion>
+		<seccion name="ingenieria agraria">
+			<carrera>Ingenieria agricola</carrera>
+		</seccion>
+		<seccion name="ingenieria civil">
+			<carrera>Ingenieria civil</carrera>
+		</seccion>
+		<seccion name="nautica, maquinas y radioelectronica naval">
+			<carrera>Tecnologias marinas</carrera>
+			<carrera>Naval</carrera>
+			<carrera>Ingenieria radioelectronica naval</carrera>
+		</seccion>
 	</facultad>
+
+	<facultad name="escuela superior de ingenieria y tecnologia">
+		<seccion name="ingenieria industrial">
+			<carrera>Ingenieria electronica industrial y automatica</carrera>
+			<carrera>Ingenieria mecanica</carrera>
+			<carrera>Ingenieria quimica industrial</carrera>
+		</seccion>
+		<seccion name= "ingenieria informatica">
+			<carrera>Ingenieria informatica</carrera>
+		</seccion>
+	</facultad>
+
+	<facultad name="ciencias de la salud">
+		<seccion name="enfermeria y fisioterapia">
+			<carrera>Enfermeria</carrera>
+			<carrera>Fisioterapia</carrera>
+		</seccion>
+		<seccion name="farmacia">
+			<carrera>Farmacia</carrera>
+		</seccion>
+		<seccion name="medicina">
+			<carrera>Medicina</carrera>
+		</seccion>
+		<seccion name="psicologia">
+			<carrera>Psicologia</carrera>
+			<carrera>Logopedia</carrera>
+		</seccion>
+	</facultad>
+	
+	<facultad name="ciencias">
+		<seccion name= "biologia">
+			<carrera>Biologia</carrera>
+		</seccion>
+		<seccion name="fisica">
+			<carrera>Fisica></carrera>
+		</seccion>
+		<seccion name="matematicas">
+			<carrera>Matematicas</carrera>
+		</seccion>
+		<seccion name="quimica">
+			<carrera>Quimica</carrera>
+			<carrera>Ciencias ambientales</carrera>
+		</seccion>
+	</facultad>
+
+	<facultad name="ciencias politicas, sociales y de la comunicacion"> 
+		<seccion name="ciencias de la informacion">
+			<carrera>Periodismo></carrera>
+		</seccion> 
+		<seccion name="ciencias politicas y sociales">
+			<carrera>Trabajo social</carrera>
+			<carrera>Sociologia</carrera>
+			<carrera>Antropologia social y cultural></carrera>
+		</seccion>
+	</facultad>
+
+	<facultad name="derecho">
+		<seccion name="derecho">
+			<carrera>Derecho</carrera>
+			<carrera>Relaciones laborales</carrera>
+		</seccion>
+	</facultad>
+
+	<facultad name="economia, empresa y turismo">
+		<seccion name="ciencias economicas y empresariales">
+			<carrera>ADE</carrera>
+			<carrera>Economia</carrera>
+		</seccion>
+		<seccion name="empresa-turismo">
+			<carrera>Contabilidad y finanzas</carrera>
+			<carrera>Turismo</carrera>
+		</seccion>
+	</facultad>
+
+	<facultad name= "educacion">
+		<seccion name= "educacion">
+			<carrera>Maestro en educacion infantil</carrera>
+			<carrera>Maestro en educacion primaria</carrera>
+			<carrera>Pedagogia</carrera>
+		</seccion>
+	</facultad>
+
+	<facultad name="humanidades">
+		<seccion name="bellas artes">
+			<carrera>Bellas artes</carrera>
+			<carrera>Conservacion y restauracion de bienes culturales</carrera>
+			<carrera>Diseño</carrera>
+		</seccion>
+		<seccion name="filologia">
+			<carrera>Español: lengua y literatura</carrera>
+			<carrera>Estudios clasicos</carrera>
+			<carrera>Estudios ingleses</carrera>
+			<carrera>Estudios francofonos aplicados</carrera>
+		</seccion>
+		<seccion name="filosofia">
+			<carrera>Filosofia</carrera>
+		</seccion>
+		<seccion name="geografia e historia">
+			<carrera>Geografia y ordenacion del territorio</carrera>
+			<carrera>Historia</carrera>
+			<carrera>Historia del arte</carrera>
+		</seccion>
+	</facultad>
+		
 </facultades>
