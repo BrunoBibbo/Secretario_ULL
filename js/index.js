@@ -3,6 +3,14 @@ var conocimiento = "lib/patrones.xml";
 var palabrasMalSonantes = "lib/palabrejas.xml"
 var informacionFacultades = "lib/facultades.xml"
 
+//Variables de palabras reservadas
+var facultades = [];
+var secciones = [];
+var grados = [];
+
+//Inicializamos las palabras reservadas:
+window.onload = cargarPalabrasReservadas;
+
 //Principal para conversar.
 function conversar(){
   pregunta = document.getElementById("pregunta_usuario").value;
@@ -29,6 +37,27 @@ function cargarXMLDoc(filename){
 //Lee el documento XML y lo guarda en una variable.
 function leerXML(fichero){
   return cargarXMLDoc(fichero);
+}
+
+//Cargará las palabras reservadas y las guardará en los arrays correspondientes.
+function cargarPalabrasReservadas(){
+  var xml = leerXML(informacionFacultades);
+  var etiquetasDeFacultades = xml.getElementsByTagName("facultad");
+  var etiquetasDeSecciones = xml.getElementsByTagName("seccion");
+  var etiquetasDeGrados = xml.getElementsByTagName("carreras");
+
+  for(var i=0; i< etiquetasDeFacultades.length; i++){
+    facultades.push(etiquetasDeFacultades[i].getAttribute("name"));
+  }
+
+  for(var i=0; i< etiquetasDeSecciones.length; i++){
+    secciones.push(etiquetasDeSecciones[i].getAttribute("name"));
+  }
+
+  for(var i=0; i< etiquetasDeGrados.length; i++){
+    grados.push(etiquetasDeGrados[i].textContent);
+  }
+
 }
 
 //Reconoce los patrones del texto y devuelve una respuesta.
