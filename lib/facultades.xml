@@ -1,35 +1,35 @@
 <facultades>
-	<facultad name="escuela politecnica superior de ingeneria" >
-		<seccion name="arquitectura tecnica">
-			<carrera>Ingenieria edificacion</carrera>
+	<facultad name="escuela politécnica superior de ingenería" >
+		<seccion name="arquitectura técnica">
+			<carrera>Ingeniería edificación</carrera>
 		</seccion>
-		<seccion name="ingenieria agraria">
-			<carrera>Ingenieria agricola</carrera>
+		<seccion name="ingeniería agraria">
+			<carrera>Ingeniería agrícola</carrera>
 		</seccion>
-		<seccion name="ingenieria civil">
-			<carrera>Ingenieria civil</carrera>
+		<seccion name="ingeniería civil">
+			<carrera>Ingeníeria civil</carrera>
 		</seccion>
-		<seccion name="nautica, maquinas y radioelectronica naval">
-			<carrera>Tecnologias marinas</carrera>
+		<seccion name="náutica, máquinas y radioelectrónica naval">
+			<carrera>Tecnologías marinas</carrera>
 			<carrera>Naval</carrera>
-			<carrera>Ingenieria radioelectronica naval</carrera>
+			<carrera>Ingeniería radioelectrónica naval</carrera>
 		</seccion>
 	</facultad>
 
-	<facultad name="escuela superior de ingenieria y tecnologia">
-		<seccion name="ingenieria industrial">
-			<carrera>Ingenieria electronica industrial y automatica</carrera>
-			<carrera>Ingenieria mecanica</carrera>
-			<carrera>Ingenieria quimica industrial</carrera>
+	<facultad name="escuela superior de ingeniería y tecnología">
+		<seccion name="ingeniería industrial">
+			<carrera>Ingeniería electrónica industrial y automática</carrera>
+			<carrera>Ingeniería mecánica</carrera>
+			<carrera>Ingeniería química industrial</carrera>
 		</seccion>
-		<seccion name= "ingenieria informatica">
-			<carrera>Ingenieria informatica</carrera>
+		<seccion name= "ingeniería informática">
+			<carrera>Ingeniería informática</carrera>
 		</seccion>
 	</facultad>
 
 	<facultad name="ciencias de la salud">
-		<seccion name="enfermeria y fisioterapia">
-			<carrera>Enfermeria</carrera>
+		<seccion name="enfermería y fisioterapia">
+			<carrera>Enfermería</carrera>
 			<carrera>Fisioterapia</carrera>
 		</seccion>
 		<seccion name="farmacia">
@@ -38,36 +38,36 @@
 		<seccion name="medicina">
 			<carrera>Medicina</carrera>
 		</seccion>
-		<seccion name="psicologia">
-			<carrera>Psicologia</carrera>
+		<seccion name="psicología">
+			<carrera>Psicología</carrera>
 			<carrera>Logopedia</carrera>
 		</seccion>
 	</facultad>
 	
 	<facultad name="ciencias">
-		<seccion name= "biologia">
-			<carrera>Biologia</carrera>
+		<seccion name= "biología">
+			<carrera>Biología</carrera>
 		</seccion>
-		<seccion name="fisica">
-			<carrera>Fisica></carrera>
+		<seccion name="física">
+			<carrera>Física></carrera>
 		</seccion>
-		<seccion name="matematicas">
-			<carrera>Matematicas</carrera>
+		<seccion name="matemáticas">
+			<carrera>Matemáticas</carrera>
 		</seccion>
-		<seccion name="quimica">
-			<carrera>Quimica</carrera>
+		<seccion name="química">
+			<carrera>Química</carrera>
 			<carrera>Ciencias ambientales</carrera>
 		</seccion>
 	</facultad>
 
-	<facultad name="ciencias politicas, sociales y de la comunicacion"> 
-		<seccion name="ciencias de la informacion">
+	<facultad name="ciencias políticas, sociales y de la comunicación"> 
+		<seccion name="ciencias de la información">
 			<carrera>Periodismo></carrera>
 		</seccion> 
-		<seccion name="ciencias politicas y sociales">
+		<seccion name="ciencias políticas y sociales">
 			<carrera>Trabajo social</carrera>
-			<carrera>Sociologia</carrera>
-			<carrera>Antropologia social y cultural></carrera>
+			<carrera>Sociología</carrera>
+			<carrera>Antropología social y cultural></carrera>
 		</seccion>
 	</facultad>
 
@@ -78,10 +78,10 @@
 		</seccion>
 	</facultad>
 
-	<facultad name="economia, empresa y turismo">
-		<seccion name="ciencias economicas y empresariales">
+	<facultad name="economía, empresa y turismo">
+		<seccion name="ciencias económicas y empresariales">
 			<carrera>ADE</carrera>
-			<carrera>Economia</carrera>
+			<carrera>Economía</carrera>
 		</seccion>
 		<seccion name="empresa-turismo">
 			<carrera>Contabilidad y finanzas</carrera>
@@ -89,31 +89,31 @@
 		</seccion>
 	</facultad>
 
-	<facultad name= "educacion">
-		<seccion name= "educacion">
-			<carrera>Maestro en educacion infantil</carrera>
-			<carrera>Maestro en educacion primaria</carrera>
-			<carrera>Pedagogia</carrera>
+	<facultad name= "educación">
+		<seccion name= "educación">
+			<carrera>Maestro en educación infantil</carrera>
+			<carrera>Maestro en educación primaria</carrera>
+			<carrera>Pedagogía</carrera>
 		</seccion>
 	</facultad>
 
 	<facultad name="humanidades">
 		<seccion name="bellas artes">
 			<carrera>Bellas artes</carrera>
-			<carrera>Conservacion y restauracion de bienes culturales</carrera>
+			<carrera>Conservación y restauración de bienes culturales</carrera>
 			<carrera>Diseño</carrera>
 		</seccion>
-		<seccion name="filologia">
+		<seccion name="filología">
 			<carrera>Español: lengua y literatura</carrera>
-			<carrera>Estudios clasicos</carrera>
+			<carrera>Estudios clásicos</carrera>
 			<carrera>Estudios ingleses</carrera>
-			<carrera>Estudios francofonos aplicados</carrera>
+			<carrera>Estudios francófonos aplicados</carrera>
 		</seccion>
-		<seccion name="filosofia">
-			<carrera>Filosofia</carrera>
+		<seccion name="filosofía">
+			<carrera>Filosofía</carrera>
 		</seccion>
-		<seccion name="geografia e historia">
-			<carrera>Geografia y ordenacion del territorio</carrera>
+		<seccion name="geografía e historia">
+			<carrera>Geografía y ordenacion del territorio</carrera>
 			<carrera>Historia</carrera>
 			<carrera>Historia del arte</carrera>
 		</seccion>
