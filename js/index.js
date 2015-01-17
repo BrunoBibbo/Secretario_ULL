@@ -44,7 +44,7 @@ function cargarPalabrasReservadas(){
   var xml = leerXML(informacionFacultades);
   var etiquetasDeFacultades = xml.getElementsByTagName("facultad");
   var etiquetasDeSecciones = xml.getElementsByTagName("seccion");
-  var etiquetasDeGrados = xml.getElementsByTagName("carreras");
+  var etiquetasDeGrados = xml.getElementsByTagName("carrera");
 
   for(var i=0; i< etiquetasDeFacultades.length; i++){
     facultades.push(etiquetasDeFacultades[i].getAttribute("name"));
