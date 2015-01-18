@@ -199,7 +199,7 @@ function realizarMineria(mineria){
 	console.log(datos_formulario);
 	
 	$.ajax({
-		url: 'http://banot.etsii.ull.es/alu4373/Prueba_PHP/php/minero.php',
+		url: 'http://banot.etsii.ull.es/alu4373/Secretario_ULL/php/minero.php',
 		data: datos_formulario,
 		type: 'GET',
 		dataType: 'json',
