@@ -70,8 +70,16 @@ function reconocerPatron(pregunta){
   var regexp;
   var frase;
   var recogido = 0;
+  var infoMineria;
   
   texto = reconocimientoMalasPalabras(pregunta);
+
+  if(!texto){
+    infoMineria = getInfoMineria(pregunta);
+    //console.log(infoMineria);
+    //MINERIAAAAA!
+    //Si encuentra algo, habrá que actualizar la variable texto!!
+  }
   
   if(!texto){
     for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
@@ -95,7 +103,6 @@ function reconocerPatron(pregunta){
         break;
     }
   }
-  
   return texto;
 }
 
