@@ -3,6 +3,10 @@ var conocimiento = "lib/patrones.xml";
 var palabrasMalSonantes = "lib/palabrejas.xml"
 var informacionFacultades = "lib/facultades.xml"
 
+//Variables de mineria:
+var codificacion;
+var resultado_web_mining;
+
 //Variables de palabras reservadas
 var facultades = [];
 var secciones = [];
@@ -76,6 +80,14 @@ function reconocerPatron(pregunta){
 
   if(!texto){
     infoMineria = getInfoMineria(pregunta);
+	
+	if(infoMineria.length > 1){
+		realizarMineria(infoMineria);
+		
+		//Segun la opcion devuelta dará una frase y el link que ha recogido
+		texto = resultado_web_mining;
+	}
+	
     //console.log(infoMineria);
     //MINERIAAAAA!
     //Si encuentra algo, habrá que actualizar la variable texto!!
@@ -94,9 +106,9 @@ function reconocerPatron(pregunta){
 
       for(j = 0; j < palabras_pregunta.length; j++){
         if(palabras_pregunta[j].match(regexp)){
-      texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-      recogido = 1;
-      break;
+		  texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+		  recogido = 1;
+		  break;
         }
       }
       if(recogido)
@@ -180,6 +192,27 @@ function getInfoMineria(texto){
   }
   else
     return;
+}
+
+function realizarMineria(mineria){
+	datos_formulario = "facultad=" + mineria[0] + "&seccion=" + mineria[1] + "&grado=" + mineria[2] + "&opcion=" + mineria[3];
+	console.log(datos_formulario);
+	
+	$.ajax({
+		url: 'http://banot.etsii.ull.es/alu4373/Prueba_PHP/php/minero.php',
+		data: datos_formulario,
+		type: 'GET',
+		dataType: 'json',
+		success: function(datos){
+			codificacion = JSON.parse(datos[0]);
+			resultado_web_mining = JSON.stringify(datos[1]);
+			console.log(codificacion);
+			console.log(resultado_web_mining);
+		},
+		error: function(xhr, ajaxOptions, throwError){
+			console.log(xhr.responseText);
+		}
+	});
 }
 
 function buscarInfo(texto, array){
