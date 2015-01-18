@@ -9,7 +9,7 @@ var secciones = [];
 var grados = [];
 
 //Inicializamos las palabras reservadas:
-window.onload = cargarPalabrasReservadas;
+cargarPalabrasReservadas;
 
 //Principal para conversar.
 function conversar(){
@@ -22,16 +22,16 @@ function conversar(){
 
 //Carga el documento XML.
 function cargarXMLDoc(filename){
-	if (window.XMLHttpRequest){
-		xhttp=new XMLHttpRequest();
-	}
-	else{
-		xhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	xhttp.open("GET",filename,false);
-	xhttp.send();
-	return xhttp.responseXML;
+  if (window.XMLHttpRequest){
+    xhttp=new XMLHttpRequest();
+  }
+  else{
+    xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  
+  xhttp.open("GET",filename,false);
+  xhttp.send();
+  return xhttp.responseXML;
 }
 
 //Lee el documento XML y lo guarda en una variable.
@@ -48,14 +48,17 @@ function cargarPalabrasReservadas(){
 
   for(var i=0; i< etiquetasDeFacultades.length; i++){
     facultades.push(etiquetasDeFacultades[i].getAttribute("name"));
+    //console.log(facultades[i]);
   }
 
   for(var i=0; i< etiquetasDeSecciones.length; i++){
     secciones.push(etiquetasDeSecciones[i].getAttribute("name"));
+    //console.log(secciones[i]);
   }
 
   for(var i=0; i< etiquetasDeGrados.length; i++){
     grados.push(etiquetasDeGrados[i].textContent);
+    //console.log(grados[i]);
   }
 
 }
@@ -72,24 +75,24 @@ function reconocerPatron(pregunta){
   
   if(!texto){
     for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
-	    frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
-	    regexp = new RegExp(",?\\s");
-	  
-	    palabras_pregunta = pregunta.split(regexp);
-	  
-	    palabras_patron = frase.split(regexp);
-	  
-	    regexp = new RegExp(palabras_patron[0], "gi");
+      frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
+      regexp = new RegExp(",?\\s");
+    
+      palabras_pregunta = pregunta.split(regexp);
+    
+      palabras_patron = frase.split(regexp);
+    
+      regexp = new RegExp(palabras_patron[0], "gi");
 
-	    for(j = 0; j < palabras_pregunta.length; j++){
-	      if(palabras_pregunta[j].match(regexp)){
-			texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-			recogido = 1;
-			break;
-	      }
-	    }
-	    if(recogido)
-	      break;
+      for(j = 0; j < palabras_pregunta.length; j++){
+        if(palabras_pregunta[j].match(regexp)){
+      texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+      recogido = 1;
+      break;
+        }
+      }
+      if(recogido)
+        break;
     }
   }
   
@@ -107,37 +110,68 @@ function reconocimientoMalasPalabras(pregunta){
     palabrota = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
     regexp = new RegExp(",?\\s");
     
-	//console.log("palabrota" + i + ": " + palabrota);
-	
+  //console.log("palabrota" + i + ": " + palabrota);
+  
     palabras_pregunta = pregunta.split(regexp);
     
-	//console.log(palabras_pregunta);
-	
+  //console.log(palabras_pregunta);
+  
     regexp = new RegExp(palabrota, "gi");
   
     for(j = 0; j < palabras_pregunta.length; j++){
       if(palabras_pregunta[j].match(regexp)){
-		if(i == 0){
-			texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-		}
-		else{
-			for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
-				if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
-					texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
-					break;
-				}
-			}
-		}
-		recogido = 1;
-		break;
-	  }
-	  if(recogido)
-		break;
+    if(i == 0){
+      texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+    }
+    else{
+      for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
+        if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
+          texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
+          break;
+        }
+      }
+    }
+    recogido = 1;
+    break;
+    }
+    if(recogido)
+    break;
     }
   }
   
   return texto;
 }
+
+function buscarInfo(texto, array){
+    var info;
+    var regexp;
+    var iterador = 0;
+    texto = normalizarCadena(texto);
+
+    if(array.length == 0){
+      console.log("VACIOOOOOOOOO");
+    }
+
+    while(iterador < array.length){
+      var info = normalizarCadena(array[iterador]);
+      console.log(info);
+      iterador ++;
+    }
+
+}
+
+//Elimina las tildes
+function normalizarCadena(cadena){
+  cadena = cadena.toLowerCase();
+  cadena = cadena.replace(/á/g ,"a");
+  cadena = cadena.replace(/é/g ,"e");
+  cadena = cadena.replace(/í/g ,"i");
+  cadena = cadena.replace(/ó/g ,"o");
+  cadena = cadena.replace(/ú/g ,"u");
+
+  return cadena;
+}
+
 
 function crearRespuestaHtml(pregunta, respuesta) {
   pregunta_humano = document.createElement("LABEL");
@@ -158,3 +192,5 @@ function crearRespuestaHtml(pregunta, respuesta) {
   span.appendChild(br1);
   span.scrollTop = span.scrollHeight;
 }
+
+buscarInfo("Estoy buscando información sobre ingeniería informática", facultades);
