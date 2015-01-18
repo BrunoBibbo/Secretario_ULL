@@ -9,7 +9,7 @@ var secciones = [];
 var grados = [];
 
 //Inicializamos las palabras reservadas:
-cargarPalabrasReservadas;
+cargarPalabrasReservadas();
 
 //Principal para conversar.
 function conversar(){
@@ -146,15 +146,17 @@ function buscarInfo(texto, array){
     var info;
     var regexp;
     var iterador = 0;
+    var indiceDeBusqueda;
     texto = normalizarCadena(texto);
 
-    if(array.length == 0){
-      console.log("VACIOOOOOOOOO");
-    }
-
     while(iterador < array.length){
-      var info = normalizarCadena(array[iterador]);
-      console.log(info);
+      info = normalizarCadena(array[iterador]);
+      regexp = new RegExp(info, "g");
+      if(texto.match(regexp)){
+        indiceDeBusqueda = iterador;
+        return indiceDeBusqueda;
+      }
+      else
       iterador ++;
     }
 
@@ -162,6 +164,10 @@ function buscarInfo(texto, array){
 
 //Elimina las tildes
 function normalizarCadena(cadena){
+  
+  var palabras;
+  var resultado = "";
+  var puntuaciones = new RegExp("\\.|,?\\s");
   cadena = cadena.toLowerCase();
   cadena = cadena.replace(/á/g ,"a");
   cadena = cadena.replace(/é/g ,"e");
@@ -169,7 +175,15 @@ function normalizarCadena(cadena){
   cadena = cadena.replace(/ó/g ,"o");
   cadena = cadena.replace(/ú/g ,"u");
 
-  return cadena;
+  palabras = cadena.split(puntuaciones);
+  for(var i=0; i< palabras.length; i++){
+    if(palabras[i].length > 2){
+      if(i != 0)
+        resultado = resultado.concat(" ");
+      resultado = resultado.concat(palabras[i]);
+    }
+  }
+  return resultado;
 }
 
 
@@ -192,5 +206,3 @@ function crearRespuestaHtml(pregunta, respuesta) {
   span.appendChild(br1);
   span.scrollTop = span.scrollHeight;
 }
-
-buscarInfo("Estoy buscando información sobre ingeniería informática", facultades);
