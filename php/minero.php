@@ -49,8 +49,10 @@
 		}
 	}
 	
-	$resultado[0] = 0;
-	$resultado[1] = $web_grado;
+	if(strlen($web_grado) > 0){
+		$resultado[0] = 0;
+		$resultado[1] = $web_grado;
+	}
 	
 	$html_grado = file_get_html($web_grado);
 	$array_grado = $html_grado->find('a');
@@ -62,8 +64,10 @@
 		}
 	}
 	
-	$resultado[0] = 1;
-	$resultado[1] = $web_carrera;
+	if(strlen($web_carrera) > 0){
+		$resultado[0] = 1;
+		$resultado[1] = $web_carrera;
+	}
 	
 	if($_GET["opcion"]){
 		$html_carrera = file_get_html($web_carrera);
@@ -120,8 +124,10 @@
 			if($matching){
 				$web_opcion = $web_facultades . $array_carrera[$i]->href;
 
-				$resultado[0] = 2;
-				$resultado[1] = $web_opcion;
+				if(strlen($web_opcion) > 0){
+					$resultado[0] = 2;
+					$resultado[1] = $web_opcion;
+				}
 				
 				if($palabras_basura_utiles > 0){
 					$html_carrera = file_get_html($web_opcion);
