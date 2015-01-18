@@ -142,6 +142,39 @@ function reconocimientoMalasPalabras(pregunta){
   return texto;
 }
 
+function getInfoMineria(texto){
+  var facultad_solicitada = buscarInfo(texto, facultades);
+  var grado_solicitado = buscarInfo(texto, grados);
+  var xml = leerXML(informacionFacultades);
+  var nodos;
+  var contador = 0;
+  var grado;
+  var infoMineria = [4];
+
+  if(grado_solicitado){
+    nodos = xml.getElementsByTagName("carrera");
+    while(contador < nodos.length){
+      if(grados[grado_solicitado] == nodos[contador].textContent){
+          infoMineria[0] = nodos[contador].parentNode.parentNode.getAttribute("name");
+          infoMineria[1] = nodos[contador].parentNode.getAttribute("name");
+          infoMineria[2] = grados[grado_solicitado];
+          infoMineria[3] = crearBasura(texto, grados[grado_solicitado]);
+          console.log(infoMineria);
+          return infoMineria;
+      }
+      contador ++;
+    }
+  }
+  else if (facultad_solicitada){
+    infoMineria[0] = facultades[facultad_solicitada];
+    infoMineria[3] = crearBasura(texto, facultades[facultad_solicitada]);
+    console.log(infoMineria);
+    return infoMineria;
+  }
+  else
+    return;
+}
+
 function buscarInfo(texto, array){
     var info;
     var regexp;
@@ -184,6 +217,16 @@ function normalizarCadena(cadena){
     }
   }
   return resultado;
+}
+
+function crearBasura(texto, matching){
+  var basura;
+  var match;
+  var regexp;
+  basura = normalizarCadena(texto);
+  match = normalizarCadena(matching);
+  basura = basura.replace(match," ");
+  return basura;
 }
 
 
