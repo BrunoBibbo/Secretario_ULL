@@ -49,7 +49,7 @@
 			<carrera>Biología</carrera>
 		</seccion>
 		<seccion name="física">
-			<carrera>Física></carrera>
+			<carrera>Física</carrera>
 		</seccion>
 		<seccion name="matemáticas">
 			<carrera>Matemáticas</carrera>
@@ -62,12 +62,12 @@
 
 	<facultad name="ciencias políticas, sociales y de la comunicación"> 
 		<seccion name="ciencias de la información">
-			<carrera>Periodismo></carrera>
+			<carrera>Periodismo</carrera>
 		</seccion> 
 		<seccion name="ciencias políticas y sociales">
 			<carrera>Trabajo social</carrera>
 			<carrera>Sociología</carrera>
-			<carrera>Antropología social y cultural></carrera>
+			<carrera>Antropología social y cultural</carrera>
 		</seccion>
 	</facultad>
 
