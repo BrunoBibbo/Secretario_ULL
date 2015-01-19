@@ -25,7 +25,9 @@
 	$web_opcion = "";
 	
 	//Resultado:
-	$resultado = array(0 => -1, 1 => "");
+	$texto_recogido = "";
+	$resultado = array(0 => -1, 1 => "", 2 => "");
+	
 	
 	/*echo "La facultad: " . $_GET["facultad"] . "\n";
 	echo "La seccion: " . $_GET["seccion"] . "\n";
@@ -151,6 +153,10 @@
 					if(strlen($web_opcion) > 0){
 						$resultado[0] = 3;
 						$resultado[1] = $web_opcion;
+						if(strlen($resultado[2]) == 0)
+							$resultado[2] = $array_carrera[$i]->plaintext;
+						else
+							$resultado[2] = $resultado[2] . " - " . $array_carrera[$i]->plaintext;
 					}
 					
 					if($palabras_basura_utiles > 0){
