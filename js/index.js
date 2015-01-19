@@ -91,16 +91,17 @@ function reconocerPatron(pregunta){
 
     if(codificacion != -1){
       switch (codificacion){
-        case 0: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
+        case 0: for(var i=0; i<resultado_web_mining.length;i++)
+                  texto += "<a href=\"" + resultado_web_mining[i] + "\"></a>\n";
                 texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
                 break;
 
         case 1: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + " es:\n" + texto;
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
                 break;
 
         case 2: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + "es:\n" + texto;
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
                 break;
 
         case 3: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
