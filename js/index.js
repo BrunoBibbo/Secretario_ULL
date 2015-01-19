@@ -7,6 +7,7 @@ var resultadosRespuestas = "lib/respuestas.xml"
 //Variables de mineria:
 var codificacion;
 var resultado_web_mining;
+var resultado_opcion;
 var links = [];
 
 //Variables de palabras reservadas
@@ -54,17 +55,14 @@ function cargarPalabrasReservadas(){
 
   for(var i=0; i< etiquetasDeFacultades.length; i++){
     facultades.push(etiquetasDeFacultades[i].getAttribute("name"));
-    //console.log(facultades[i]);
   }
 
   for(var i=0; i< etiquetasDeSecciones.length; i++){
     secciones.push(etiquetasDeSecciones[i].getAttribute("name"));
-    //console.log(secciones[i]);
   }
 
   for(var i=0; i< etiquetasDeGrados.length; i++){
     grados.push(etiquetasDeGrados[i].textContent);
-    //console.log(grados[i]);
   }
 
 }
@@ -82,55 +80,48 @@ function reconocerPatron(pregunta){
   texto = reconocimientoMalasPalabras(pregunta);
 
   if(!texto){
-    infoMineria = getInfoMineria(pregunta);
+		infoMineria = getInfoMineria(pregunta);
   
-  if(infoMineria && infoMineria.length > 1){
-    realizarMineria(infoMineria);
-    
-    //Segun la opcion devuelta dará una frase y el link que ha recogido
-    //texto = resultado_web_mining;
+		if(infoMineria && infoMineria.length > 1){
+			realizarMineria(infoMineria);
 
-    if(codificacion != -1){
-      var text;
-      switch (codificacion){
-        case 0:   var nombres_secciones = buscarHijo(infoMineria[codificacion]);
-                  for(var i=0; i<resultado_web_mining.length;i++){
-                    links[i]= document.createElement("A");
-                    links[i].setAttribute('href', resultado_web_mining[i]);
-                    text = document.createTextNode(nombres_secciones[i]);
-                    links[i].appendChild(text);
-                }
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ": \n";
-                break;
+		if(codificacion != -1){
+		  var text;
+		  switch (codificacion){
+			case 0:   var nombres_secciones = buscarHijo(infoMineria[codificacion]);
+					  for(var i=0; i<resultado_web_mining.length;i++){
+						links[i]= document.createElement("A");
+						links[i].setAttribute('href', resultado_web_mining[i]);
+						text = document.createTextNode(nombres_secciones[i]);
+						links[i].appendChild(text);
+					}
+					texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ": \n";
+					break;
 
-        case 1: links.push(document.createElement("A"));
-                links[0].setAttribute('href', resultado_web_mining);
-                text = document.createTextNode(infoMineria[codificacion]);
-                links[0].appendChild(text);
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
-                break;
+			case 1: links.push(document.createElement("A"));
+					links[0].setAttribute('href', resultado_web_mining);
+					text = document.createTextNode(infoMineria[codificacion]);
+					links[0].appendChild(text);
+					texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
+					break;
 
-        case 2: links.push(document.createElement("A"));
-                links[0].setAttribute('href', resultado_web_mining);
-                text = document.createTextNode(infoMineria[codificacion]);
-                links[0].appendChild(text);
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
-                break;
+			case 2: links.push(document.createElement("A"));
+					links[0].setAttribute('href', resultado_web_mining);
+					text = document.createTextNode(infoMineria[codificacion]);
+					links[0].appendChild(text);
+					texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
+					break;
 
-        case 3: links.push(document.createElement("A"));
-                links[0].setAttribute('href', resultado_web_mining);
-                text = document.createTextNode(infoMineria[codificacion]);
-                links[0].appendChild(text);
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
-                break;
+			case 3: links.push(document.createElement("A"));
+					links[0].setAttribute('href', resultado_web_mining);
+					text = document.createTextNode(resultado_opcion);
+					links[0].appendChild(text);
+					texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
+					break;
 
-      }
-    }
-  }
-  
-    //console.log(infoMineria);
-    //MINERIAAAAA!
-    //Si encuentra algo, habrá que actualizar la variable texto!!
+		  }
+		}
+	  }
   }
   
   if(!texto){
@@ -174,12 +165,8 @@ function reconocimientoMalasPalabras(pregunta){
   for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
     palabrota = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
     regexp = new RegExp(",?\\s");
-    
-  //console.log("palabrota" + i + ": " + palabrota);
   
     palabras_pregunta = pregunta.split(regexp);
-    
-  //console.log(palabras_pregunta);
   
     regexp = new RegExp(palabrota, "gi");
   
@@ -253,8 +240,7 @@ function realizarMineria(mineria){
     success: function(datos){
       codificacion = JSON.parse(datos[0]);
       resultado_web_mining = datos[1];
-      console.log(codificacion);
-      console.log(resultado_web_mining);
+	  resultado_opcion = datos[2];
     },
     error: function(xhr, ajaxOptions, throwError){
       console.log(xhr.responseText);
@@ -351,9 +337,12 @@ function crearRespuestaHtml(pregunta, respuesta) {
   span.appendChild(pregunta_humano);
   span.appendChild(br);
   span.appendChild(respuesta_bot);
+  
   for(var i = 0; i< links.length; i++){
     span.appendChild(links[i]);
+	span.appendChild(document.createElement("BR"));
   }
+  
   links = [];
   span.appendChild(br1);
   span.scrollTop = span.scrollHeight;
