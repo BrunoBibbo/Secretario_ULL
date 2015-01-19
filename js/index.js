@@ -2,6 +2,7 @@
 var conocimiento = "lib/patrones.xml";
 var palabrasMalSonantes = "lib/palabrejas.xml"
 var informacionFacultades = "lib/facultades.xml"
+var resultadosRespuestas = "lib/respuestas.xml"
 
 //Variables de mineria:
 var codificacion;
@@ -70,6 +71,7 @@ function cargarPalabrasReservadas(){
 //Reconoce los patrones del texto y devuelve una respuesta.
 function reconocerPatron(pregunta){
   var xml = leerXML(conocimiento);
+  var respuestas = leerXML(resultadosRespuestas);
   var texto;
   var regexp;
   var frase;
@@ -85,7 +87,29 @@ function reconocerPatron(pregunta){
 		realizarMineria(infoMineria);
 		
 		//Segun la opcion devuelta dará una frase y el link que ha recogido
-		texto = resultado_web_mining;
+		//texto = resultado_web_mining;
+
+    if(codificacion != -1){
+      switch (codificacion){
+        case 0: for(var i=0; i< resultado_web_mining.length; i++)
+                  texto += "<a>" + resultado_web_mining[i] +"</a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+                break;
+
+        case 1: texto = "<a>" + resultado_web_mining +"</a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+                break;
+
+        case 2: texto = "<a>" + resultado_web_mining +"</a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+                break;
+
+        case 3: texto = "<a>" + resultado_web_mining +"</a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+                break;
+
+      }
+    }
 	}
 	
     //console.log(infoMineria);
