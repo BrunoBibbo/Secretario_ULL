@@ -82,36 +82,35 @@ function reconocerPatron(pregunta){
 
   if(!texto){
     infoMineria = getInfoMineria(pregunta);
-	
-	if(infoMineria && infoMineria.length > 1){
-		realizarMineria(infoMineria);
-		
-		//Segun la opcion devuelta dará una frase y el link que ha recogido
-		//texto = resultado_web_mining;
+  
+  if(infoMineria && infoMineria.length > 1){
+    realizarMineria(infoMineria);
+    
+    //Segun la opcion devuelta dará una frase y el link que ha recogido
+    //texto = resultado_web_mining;
 
     if(codificacion != -1){
       switch (codificacion){
-        case 0: for(var i=0; i< resultado_web_mining.length; i++)
-                  texto += "<a>" + resultado_web_mining[i] +"</a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+        case 0: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
                 break;
 
-        case 1: texto = "<a>" + resultado_web_mining +"</a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+        case 1: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + " es:\n" + texto;
                 break;
 
-        case 2: texto = "<a>" + resultado_web_mining +"</a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+        case 2: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + "es:\n" + texto;
                 break;
 
-        case 3: texto = "<a>" + resultado_web_mining +"</a>\n";
+        case 3: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
                 texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
                 break;
 
       }
     }
-	}
-	
+  }
+  
     //console.log(infoMineria);
     //MINERIAAAAA!
     //Si encuentra algo, habrá que actualizar la variable texto!!
@@ -130,9 +129,9 @@ function reconocerPatron(pregunta){
 
       for(j = 0; j < palabras_pregunta.length; j++){
         if(palabras_pregunta[j].match(regexp)){
-		  texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-		  recogido = 1;
-		  break;
+      texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+      recogido = 1;
+      break;
         }
       }
       if(recogido)
@@ -225,25 +224,25 @@ function getInfoMineria(texto){
 }
 
 function realizarMineria(mineria){
-	datos_formulario = "facultad=" + mineria[0] + "&seccion=" + mineria[1] + "&grado=" + mineria[2] + "&opcion=" + mineria[3];
-	console.log(datos_formulario);
-	
-	$.ajax({
-		url: 'http://banot.etsii.ull.es/alu4373/Secretario_ULL/php/minero.php',
-		data: datos_formulario,
-		type: 'GET',
-		dataType: 'json',
-		async: false,
-		success: function(datos){
-			codificacion = JSON.parse(datos[0]);
-			resultado_web_mining = datos[1];
-			console.log(codificacion);
-			console.log(resultado_web_mining);
-		},
-		error: function(xhr, ajaxOptions, throwError){
-			console.log(xhr.responseText);
-		}
-	});
+  datos_formulario = "facultad=" + mineria[0] + "&seccion=" + mineria[1] + "&grado=" + mineria[2] + "&opcion=" + mineria[3];
+  console.log(datos_formulario);
+  
+  $.ajax({
+    url: 'http://banot.etsii.ull.es/alu4373/Secretario_ULL/php/minero.php',
+    data: datos_formulario,
+    type: 'GET',
+    dataType: 'json',
+    async: false,
+    success: function(datos){
+      codificacion = JSON.parse(datos[0]);
+      resultado_web_mining = datos[1];
+      console.log(codificacion);
+      console.log(resultado_web_mining);
+    },
+    error: function(xhr, ajaxOptions, throwError){
+      console.log(xhr.responseText);
+    }
+  });
 }
 
 function buscarInfo(texto, array){
