@@ -7,6 +7,7 @@ var resultadosRespuestas = "lib/respuestas.xml"
 //Variables de mineria:
 var codificacion;
 var resultado_web_mining;
+var links = [];
 
 //Variables de palabras reservadas
 var facultades = [];
@@ -90,22 +91,37 @@ function reconocerPatron(pregunta){
     //texto = resultado_web_mining;
 
     if(codificacion != -1){
+      var text;
       switch (codificacion){
-        case 0: for(var i=0; i<resultado_web_mining.length;i++)
-                  texto += "<a href=\"" + resultado_web_mining[i] + "\"></a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
+        case 0:   var nombres_secciones = buscarHijo(infoMineria[codificacion]);
+                  for(var i=0; i<resultado_web_mining.length;i++){
+                    links[i]= document.createElement("A");
+                    links[i].setAttribute('href', resultado_web_mining[i]);
+                    text = document.createTextNode(nombres_secciones[i]);
+                    links[i].appendChild(text);
+                }
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ": \n";
                 break;
 
-        case 1: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
+        case 1: links.push(document.createElement("A"));
+                links[0].setAttribute('href', resultado_web_mining);
+                text = document.createTextNode(infoMineria[codificacion]);
+                links[0].appendChild(text);
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
                 break;
 
-        case 2: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + infoMineria[codificacion] + ":\n" + texto;
+        case 2: links.push(document.createElement("A"));
+                links[0].setAttribute('href', resultado_web_mining);
+                text = document.createTextNode(infoMineria[codificacion]);
+                links[0].appendChild(text);
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
                 break;
 
-        case 3: texto = "<a href=\"" + resultado_web_mining + "\"></a>\n";
-                texto = respuestas.getElementsByTagName('template')[codificacion].textContent + "\n" + texto;
+        case 3: links.push(document.createElement("A"));
+                links[0].setAttribute('href', resultado_web_mining);
+                text = document.createTextNode(infoMineria[codificacion]);
+                links[0].appendChild(text);
+                texto = respuestas.getElementsByTagName('template')[codificacion].textContent;
                 break;
 
       }
@@ -266,6 +282,24 @@ function buscarInfo(texto, array){
 
 }
 
+function buscarHijo(padre){
+  var xml = leerXML(informacionFacultades);
+  var facs = xml.getElementsByTagName("facultad");
+  var secc;
+  var result = [];
+  var iterador = 0;
+  while(iterador < facs.length){
+    if(facs[iterador].getAttribute("name") == padre){
+      for(var i = 0; i< facs[iterador].childNodes.length; i++ ){
+        if(facs[iterador].childNodes[i].nodeName == "seccion")//return facs[iterador].childNodes;
+          result.push(facs[iterador].childNodes[i].getAttribute("name"));
+      }
+      return result;
+    }
+    iterador ++;
+  }
+}
+
 //Elimina las tildes
 function normalizarCadena(cadena){
   
@@ -317,6 +351,10 @@ function crearRespuestaHtml(pregunta, respuesta) {
   span.appendChild(pregunta_humano);
   span.appendChild(br);
   span.appendChild(respuesta_bot);
+  for(var i = 0; i< links.length; i++){
+    span.appendChild(links[i]);
+  }
+  links = [];
   span.appendChild(br1);
   span.scrollTop = span.scrollHeight;
 }
