@@ -1,6 +1,6 @@
 <category>
-	<pattern>Aquí le dejo los enlaces de la facultad solicitada. Cada uno de ellos hace referencia a una sección: </pattern>
-	<pattern>He encontrado la web de la sección que ha especificado. Puede consultarla aquí: </pattern>
-	<pattern>En este enlace puede encontrar la información necesaria sobre la carrera: </pattern>
-	<pattern>Puede que encuentre la información específica que ha solicitado en el siguiente enlace: </pattern>
+	<template>Aquí le dejo los enlaces de la facultad solicitada. Cada uno de ellos hace referencia a una sección: </template>
+	<template>He encontrado la web de la sección que ha especificado. Puede consultarla aquí: </template>
+	<template>En este enlace puede encontrar la información necesaria sobre la carrera: </template>
+	<template>Puede que encuentre la información específica que ha solicitado en el siguiente enlace: </template>
 </category>
