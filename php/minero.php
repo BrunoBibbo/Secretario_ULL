@@ -36,9 +36,12 @@
 	for($i = 0; $i < sizeof($array_facultades) - 1; $i++){
 		if(preg_match("/" . $_GET["facultad"] . "/i", html_entity_decode($array_facultades[$i]->plaintext))){
 			$web_secciones = $web_facultades . $array_facultades[$i]->href;
+			
+			if(sizeof(explode(" ", html_entity_decode($array_facultades[$i]->plaintext))) == 3)
+				break;
 		}
 	}
-	
+
 	$html_secciones = file_get_html($web_secciones);
 	$array_secciones = $html_secciones->find('a');
 
@@ -64,7 +67,7 @@
 				$web_grado = $array_secciones[$i]->href;
 			}
 		}
-		
+
 		if(!file_get_html($web_grado)){
 			$web_grado = $web_facultades . $web_grado;
 		}
