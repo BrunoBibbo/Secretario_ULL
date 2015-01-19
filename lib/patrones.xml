@@ -6,7 +6,6 @@
    <pattern>BIEN, Y TU?</pattern>
    <template>Bien también :).</template>
 
-   <!-- Desconocido... el bot no tiene ni idea-->
    <template>Lo siento. No entiendo qué quiere decirme.</template>
-   <!-- ------------------------------------- -->
+
 </category>
