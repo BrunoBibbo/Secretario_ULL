@@ -151,7 +151,7 @@ function reconocerPatron(pregunta){
       texto = xml.getElementsByTagName('template')[size -1].textContent;
     }
   }
-  console.log("texto a sacar: " +texto);
+
   return texto;
 }
 
@@ -211,7 +211,7 @@ function getInfoMineria(texto){
           infoMineria[1] = nodos[contador].parentNode.getAttribute("name");
           infoMineria[2] = grados[grado_solicitado];
           infoMineria[3] = crearBasura(texto, grados[grado_solicitado]);
-          console.log(infoMineria);
+
           return infoMineria;
       }
       contador ++;
@@ -220,7 +220,7 @@ function getInfoMineria(texto){
   else if (facultad_solicitada){
     infoMineria[0] = facultades[facultad_solicitada];
     infoMineria[3] = crearBasura(texto, facultades[facultad_solicitada]);
-    console.log(infoMineria);
+
     return infoMineria;
   }
   else
@@ -229,7 +229,6 @@ function getInfoMineria(texto){
 
 function realizarMineria(mineria){
   datos_formulario = "facultad=" + mineria[0] + "&seccion=" + mineria[1] + "&grado=" + mineria[2] + "&opcion=" + mineria[3];
-  console.log(datos_formulario);
   
   $.ajax({
     url: 'http://banot.etsii.ull.es/alu4373/Secretario_ULL/php/minero.php',
