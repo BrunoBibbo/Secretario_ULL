@@ -65,6 +65,10 @@
 			}
 		}
 		
+		if(!file_get_html($web_grado)){
+			$web_grado = $web_facultades . $web_grado;
+		}
+		
 		if(strlen($web_grado) > 0){
 			$resultado[0] = 1;
 			$resultado[1] = $web_grado;
@@ -72,10 +76,10 @@
 		
 		$html_grado = file_get_html($web_grado);
 		$array_grado = $html_grado->find('a');
-		
+
 		//Recogiendo Grado:
 		for($i = 0; $i < sizeof($array_grado); $i++){
-			if(preg_match("/" . $_GET["grado"] . "/i", html_entity_decode($array_grado[$i]->plaintext))){
+			if(preg_match('|grado[\s*\w*\s*]*' . $_GET["grado"] . '|i', html_entity_decode($array_grado[$i]->plaintext))){
 				$web_carrera = $web_facultades . $array_grado[$i]->href;
 			}
 		}
@@ -137,7 +141,7 @@
 						}
 					}
 				}
-				
+
 				if($matching){
 					$web_opcion = $web_facultades . $array_carrera[$i]->href;
 
