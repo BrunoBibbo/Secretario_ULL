@@ -114,6 +114,11 @@ function reconocerPatron(pregunta){
       if(recogido)
         break;
     }
+
+    if(!texto){
+      var size = xml.getElementsByTagName('template').length;
+      texto = xml.getElementsByTagName('template')[size -1].textContent;
+    }
   }
   console.log("texto a sacar: " +texto);
   return texto;
