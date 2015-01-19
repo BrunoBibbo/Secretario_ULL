@@ -81,7 +81,7 @@ function reconocerPatron(pregunta){
   if(!texto){
     infoMineria = getInfoMineria(pregunta);
 	
-	if(infoMineria.length > 1){
+	if(infoMineria && infoMineria.length > 1){
 		realizarMineria(infoMineria);
 		
 		//Segun la opcion devuelta dará una frase y el link que ha recogido
@@ -115,6 +115,7 @@ function reconocerPatron(pregunta){
         break;
     }
   }
+  console.log("texto a sacar: " +texto);
   return texto;
 }
 
@@ -203,9 +204,10 @@ function realizarMineria(mineria){
 		data: datos_formulario,
 		type: 'GET',
 		dataType: 'json',
+		async: false,
 		success: function(datos){
 			codificacion = JSON.parse(datos[0]);
-			resultado_web_mining = JSON.stringify(datos[1]);
+			resultado_web_mining = datos[1];
 			console.log(codificacion);
 			console.log(resultado_web_mining);
 		},
