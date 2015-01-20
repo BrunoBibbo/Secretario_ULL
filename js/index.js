@@ -15,6 +15,10 @@ var facultades = [];
 var secciones = [];
 var grados = [];
 
+//Easter Egg
+var insultos = 0;
+var penalizacion = 0;
+
 //Inicializamos las palabras reservadas:
 cargarPalabrasReservadas();
 
@@ -180,22 +184,24 @@ function reconocimientoMalasPalabras(pregunta){
   
     for(j = 0; j < palabras_pregunta.length; j++){
       if(palabras_pregunta[j].match(regexp)){
-    if(i == 0){
-      texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-    }
-    else{
-      for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
-        if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
-          texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
-          break;
-        }
-      }
-    }
-    recogido = 1;
-    break;
-    }
+		if(i == 0){
+			texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+			penalizacion = 1;
+		}
+		else{
+		  for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
+			if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
+			  texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
+			  penalizacion = 1;
+			  break;
+			}
+		  }
+		}
+		recogido = 1;
+		break;
+	  }
     if(recogido)
-    break;
+		break;
     }
   }
   
@@ -343,14 +349,22 @@ function crearRespuestaHtml(pregunta, respuesta) {
   span = document.getElementById("conversacion");
   span.appendChild(pregunta_humano);
   span.appendChild(br);
-  span.appendChild(respuesta_bot);
   
-  for(var i = 0; i< links.length; i++){
-    span.appendChild(links[i]);
-	span.appendChild(document.createElement("BR"));
+  if(insultos < 3){
+	  span.appendChild(respuesta_bot);
+	  
+	  for(var i = 0; i< links.length; i++){
+		span.appendChild(links[i]);
+		span.appendChild(document.createElement("BR"));
+	  }
+	  
+	  span.appendChild(br1);
+	  
+	  if(penalizacion == 1){
+		  insultos++;
+		  penalizacion = 0;
+	  }
   }
-  
-  span.appendChild(br1);
   span.scrollTop = span.scrollHeight;
   
   links = [];
