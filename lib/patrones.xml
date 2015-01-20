@@ -7,7 +7,7 @@
    <template>Bien también :)</template>
    <pattern>QUE EDAD TIENES</pattern>
    <template>Eso es una pregunta muy personal</template>
-   <pattern>CUANTOS A OS TIENES</pattern>
+   <pattern>CUANTOS AÑOS TIENES</pattern>
    <template>Eso es una pregunta muy personal</template>
    <pattern>QUIEN ES TU CREADOR</pattern>
    <template>Dos desgraciados que no tenían otra cosa que hacer</template>
