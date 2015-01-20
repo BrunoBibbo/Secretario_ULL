@@ -1,6 +1,8 @@
 <category>
    <pattern>IDIOTA</pattern>
-   <template>Disculpe, pero no es necesario faltar el respeto usando esas expresiones.</template>
+   <template>Disculpa, pero no es necesario faltar el respeto usando esas expresiones.</template>
+   <template>Te estás pasando de la raya, me estoy cansando de esa actitud.</template>
+   <template>Se acabó. No tengo porque mantener esta conversación. Adios.</template>
 
    <pattern>CABRON</pattern>
    <srai>IDIOTA</srai>
