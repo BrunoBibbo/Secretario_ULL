@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<category>
+   <pattern>HOLA</pattern>
+   <template>Hola, ¿qué desea?</template>
+   <pattern>COMO ESTAS</pattern>
+   <template>Bien, ¿y tu?</template>
+   <pattern>BIEN</pattern>
+   <template>Me alegro :)</template>
+   <pattern>QUE EDAD TIENES</pattern>
+   <template>Eso es una pregunta muy personal</template>
+   <pattern>ADIOS</pattern>
+   <template>Adios :)</template>
+   <pattern>CUANTOS AÑOS TIENES</pattern>
+   <template>Eso es una pregunta muy personal</template>
+   <pattern>QUIEN ES TU CREADOR</pattern>
+   <template>Dos desgraciados que no tenían otra cosa que hacer</template>
+   <pattern>COMO TE LLAMAS</pattern>
+   <template>Soy el asistente de facultades de la universidad de la laguna</template>
+   <pattern>CUAL ES TU TRABAJO</pattern>
+   <template>Mi trabajo es facilitarle al usuario información sobre las distintas facultades y carreras asociadas.</template>
+   <pattern>A QUE TE DEDICAS</pattern>
+   <template>Mi trabajo es facilitarle al usuario información sobre las distintas facultades y carreras asociadas.</template>
+   <pattern>QUE HACES</pattern>
+   <template>Mi trabajo es facilitarle al usuario información sobre las distintas facultades y carreras asociadas.</template>
+   <pattern>QUE TE GUSTA</pattern>
+   <template>Me gustaba dar paseos por el parque, admirar la belleza de la naturaleza, vivir. Pero desde que acepté este trabajo no hago más que responder preguntas.</template>
+   <pattern>HOBBIE</pattern>
+   <template>No tengo tiempo para eso...</template>
+   <pattern>QUIERES SER MI AMIGO</pattern>
+   <template>Si, seamos amigos :)</template>
+   <pattern>PREGUNTA</pattern>
+   <template>He sido creado para responder, no para cuestionar.</template>
+   <pattern>SI</pattern>
+   <template>Si, ¿qué?</template>
+   <pattern>NO</pattern>
+   <template>No, ¿qué?</template>
+   <pattern>CONOCES A IRENE</pattern>
+   <template>Claro que la conozco, ¡eramos compañeros de clase!. Es curioso que hayamos acabado trabajando en lo mismo. Claro que... Ella por lo menos viaja. ¡Maldita sea! Porque no habré aprendido idiomas...</template>
+   <pattern>CONOCES A ANA</pattern>
+   <template>¿Que si la conozco? Ni me la menciones. Una vez en preescolar me tiro un potito en el babero... ¡no se lo perdonaré jamás!</template>
+   <template>Lo siento. No entiendo qué quiere decirme.</template>
+</category>

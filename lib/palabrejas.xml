@@ -1,0 +1,54 @@
+<category>
+   <pattern>IDIOTA</pattern>
+   <template>Disculpa, pero no es necesario faltar el respeto usando esas expresiones.</template>
+   <template>Te estás pasando de la raya, me estoy cansando de esa actitud.</template>
+   <template>Se acabó. No tengo porque mantener esta conversación. Adios.</template>
+
+   <pattern>CABRON</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>CAPULLO</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>COÑO</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>ESTUPIDO</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>ESTUPIDA</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>GILI</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>GILIPOLLAS</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>JODER</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>MARICA</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>MARIQUITA</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>MIERDA</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>POLLA</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>PUTA</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>PUTO</pattern>
+   <srai>IDIOTA</srai>
+
+   <pattern>SUBNORMAL</pattern>
+   <srai>IDIOTA</srai>
+   
+   <pattern>TONTO</pattern>
+   <srai>IDIOTA</srai>
+</category>
