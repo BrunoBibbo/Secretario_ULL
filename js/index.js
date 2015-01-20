@@ -367,5 +367,6 @@ function crearRespuestaHtml(pregunta, respuesta) {
   }
   span.scrollTop = span.scrollHeight;
   
+  pregunta_usuario.value = "";
   links = [];
 }
