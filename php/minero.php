@@ -28,12 +28,6 @@
 	$texto_recogido = "";
 	$resultado = array(0 => -1, 1 => "", 2 => "");
 	
-	
-	/*echo "La facultad: " . $_GET["facultad"] . "\n";
-	echo "La seccion: " . $_GET["seccion"] . "\n";
-	echo "El grado: " . $_GET["grado"] . "\n";
-	echo "La basura: " . $_GET["opcion"] . "\n";*/
-	
 	//Recogiendo Facultad:
 	for($i = 0; $i < sizeof($array_facultades) - 1; $i++){
 		if(preg_match("/" . $_GET["facultad"] . "/i", html_entity_decode($array_facultades[$i]->plaintext))){
@@ -119,8 +113,9 @@
 			for($i = 0; $i < sizeof($array_carrera); $i++){
 				$array_carrera[$i]->plaintext = str_replace($tilde, $sin_tilde, $array_carrera[$i]->plaintext);
 				$posible_opcion = explode(" ", $array_carrera[$i]->plaintext);
-				
+
 				for($j = 0; $j < sizeof($palabras_basura); $j++){
+					$valor_j = $j;
 					$len_PB = strlen($palabras_basura[$j]);
 					$len_PO = strlen(html_entity_decode($posible_opcion[$contador_probabilidad]));
 					
@@ -133,6 +128,7 @@
 							unset($palabras_basura[$j]);
 							$palabras_basura = array_values($palabras_basura);
 							$palabras_basura_utiles--;
+							$j = $valor_j-1;
 							
 							$contador_probabilidad++;
 
@@ -142,7 +138,8 @@
 							}
 						}
 						else{
-							$contador_probabilidad = 0;
+							if($len_PB > 2)
+								$contador_probabilidad = 0;
 						}
 					}
 				}
