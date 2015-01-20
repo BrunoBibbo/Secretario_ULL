@@ -185,13 +185,13 @@ function reconocimientoMalasPalabras(pregunta){
     for(j = 0; j < palabras_pregunta.length; j++){
       if(palabras_pregunta[j].match(regexp)){
 		if(i == 0){
-			texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
+			texto = xml.getElementsByTagName('template')[insultos].childNodes[0].nodeValue;
 			penalizacion = 1;
 		}
 		else{
 		  for(z = 0; z < xml.getElementsByTagName('pattern').length; z++){
 			if(xml.getElementsByTagName('srai')[i].childNodes[0].nodeValue.match(xml.getElementsByTagName('pattern')[z].childNodes[0].nodeValue)){
-			  texto = xml.getElementsByTagName('template')[z].childNodes[0].nodeValue;
+			  texto = xml.getElementsByTagName('template')[insultos].childNodes[0].nodeValue;
 			  penalizacion = 1;
 			  break;
 			}
