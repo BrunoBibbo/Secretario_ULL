@@ -125,31 +125,39 @@ function reconocerPatron(pregunta){
   }
   
   if(!texto){
+	var coincidencia_anterior = 0;
+	var coincidencias = 0;
+	var patron_registrado;  
+	
     for(i = 0; i < xml.getElementsByTagName('pattern').length; i++){
+	  coincidencias = 0;
       frase = xml.getElementsByTagName('pattern')[i].childNodes[0].nodeValue;
       regexp = new RegExp(",?\\s");
     
       palabras_pregunta = pregunta.split(regexp);
     
       palabras_patron = frase.split(regexp);
-    
-      regexp = new RegExp(palabras_patron[0], "gi");
+	  
+	  for(z = 0; z < palabras_patron.length; z++){
+		  regexp = new RegExp(palabras_patron[z], "gi");
 
-      for(j = 0; j < palabras_pregunta.length; j++){
-        if(palabras_pregunta[j].match(regexp)){
-      texto = xml.getElementsByTagName('template')[i].childNodes[0].nodeValue;
-      recogido = 1;
-      break;
-        }
-      }
-      if(recogido)
-        break;
-    }
+		  for(j = 0; j < palabras_pregunta.length; j++){
+			if(palabras_pregunta[j].match(regexp)){
+				coincidencias++;
+			}
+		  }
+	  }
 
-    if(!texto){
-      var size = xml.getElementsByTagName('template').length;
-      texto = xml.getElementsByTagName('template')[size -1].textContent;
+	  if(coincidencia_anterior < coincidencias){
+        texto = xml.getElementsByTagName('template')[i].textContent;
+		coincidencia_anterior = coincidencias;
+	  }
     }
+  }
+
+  if(!texto){
+    var size = xml.getElementsByTagName('template').length;
+    texto = xml.getElementsByTagName('template')[size -1].textContent;
   }
 
   return texto;
@@ -342,7 +350,8 @@ function crearRespuestaHtml(pregunta, respuesta) {
 	span.appendChild(document.createElement("BR"));
   }
   
-  links = [];
   span.appendChild(br1);
   span.scrollTop = span.scrollHeight;
+  
+  links = [];
 }
