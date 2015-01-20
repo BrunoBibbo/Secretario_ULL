@@ -9,6 +9,8 @@
    <template>Me alegro :)</template>
    <pattern>QUE EDAD TIENES</pattern>
    <template>Eso es una pregunta muy personal</template>
+   <pattern>ADIOS</pattern>
+   <template>Adios :)</template>
    <pattern>CUANTOS AÑOS TIENES</pattern>
    <template>Eso es una pregunta muy personal</template>
    <pattern>QUIEN ES TU CREADOR</pattern>
