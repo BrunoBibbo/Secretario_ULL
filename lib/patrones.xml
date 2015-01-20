@@ -3,8 +3,10 @@
 <category>
    <pattern>HOLA</pattern>
    <template>Hola, ¿qué desea?</template>
-   <pattern>BIEN, Y TU?</pattern>
-   <template>Bien también :)</template>
+   <pattern>COMO ESTAS</pattern>
+   <template>Bien, ¿y tu?</template>
+   <pattern>BIEN</pattern>
+   <template>Me alegro :)</template>
    <pattern>QUE EDAD TIENES</pattern>
    <template>Eso es una pregunta muy personal</template>
    <pattern>CUANTOS AÑOS TIENES</pattern>
